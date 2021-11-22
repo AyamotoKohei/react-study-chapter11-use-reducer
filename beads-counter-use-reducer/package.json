@@ -1,5 +1,5 @@
 {
-  "name": "beads-counter-toolkit",
+  "name": "beads-counter-use-reducer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

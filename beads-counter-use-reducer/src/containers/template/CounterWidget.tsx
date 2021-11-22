@@ -54,15 +54,21 @@ const increment = (): CounterAction => ({
   type: CounterActionType.incremented,
 });
 
-const EnhancedCounterWidget: VFC = () => {
-  const [state, dispatch] = useReducer(counterReducer, { count: 0 });
+const EnhancedCounterWidget: VFC<{ initialCount?: number }> = ({
+  initialCount = 0,
+}) => {
+  const [state, dispatch] = useReducer(
+    counterReducer,
+    initialCount,
+    (count: number): CounterState => ({ count }),
+  );
 
   return (
     <CounterWidget
       count={state.count}
       add={(amount: number) => dispatch(add(amount))}
       decrement={() => dispatch(decrement())}
-      increment={() => increment()}
+      increment={() => dispatch(increment())}
     />
   );
 };
